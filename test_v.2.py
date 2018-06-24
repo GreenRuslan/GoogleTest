@@ -17,7 +17,7 @@ class LoginTest:
     def test_invalid_email_logIn_(self):
         baseURL = "http://www.gmail.com"
         driver = webdriver.Chrome('driver/chromedriver')
-        driver.implicitly_wait(5)
+        driver.implicitly_wait(15)
         driver.maximize_window()
         driver.get(baseURL)
 
@@ -37,7 +37,5 @@ class LoginTest:
 
 pp = LoginTest()
 # pp.test_validLogin()
-# pp.test_invalid_email_logIn_()
-pp.test_invalid_password_logIn()
-
-
+pp.test_invalid_email_logIn_()
+# pp.test_invalid_password_logIn()

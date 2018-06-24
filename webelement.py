@@ -8,12 +8,12 @@ class SeleniumDriver():
 
     def getByType(self, locatorType):
         locatorType = locatorType.lower()
-        if locatorType == "id":
-            return By.ID
+        if locatorType == "xpath":
+            return By.XPATH
         elif locatorType == "name":
             return By.NAME
-        elif locatorType == "xpath":
-            return By.XPATH
+        elif locatorType == "id":
+            return By.ID
         elif locatorType == "css":
             return By.CSS_SELECTOR
         elif locatorType == "class":
@@ -25,14 +25,14 @@ class SeleniumDriver():
         return False
 
     def getElement(self, locator, locatorType="xpath"):
-        # element = None
+        element = None
         try:
-            locatorType = locatorType.lower()
+            # locatorType = locatorType.lower()
             byType = self.getByType(locatorType)
             element = self.driver.find_element(byType, locator)
         except:
             print("Element not found with locator: " + locator + " and  locatorType: " + locatorType)
-        # return element
+        return element
 
     def elementClick(self, locator, locatorType="xpath"):
         try:
