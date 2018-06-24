@@ -37,7 +37,7 @@ class LoginTest:
 
 pp = LoginTest()
 # pp.test_validLogin()
-pp.test_invalid_email_logIn_()
-# pp.test_invalid_password_logIn()
+# pp.test_invalid_email_logIn_()
+pp.test_invalid_password_logIn()
 
 

@@ -54,11 +54,10 @@ class LogInPage(SeleniumDriver):
         self.clickLoginLink()
         self.enterEmail(email)
         self.clickEmailNext()
-        try:
-            self.clickPasswordNext()
+        if self.clickPasswordNext():
             self.driver.quit()
             print('Negative test with wrong email - Failed')
-        except:
+        else:
             print('Negative test with wrong email - Passed')
             self.driver.quit()
 
