@@ -30,31 +30,30 @@ class LogInPage(SeleniumDriver):
         self.elementClick(self._password_next_button)
 
     def checkLogIn(self):
-        self.getElement(self._elem_for_check)
+        return self.isElementPresent(self._elem_for_check)
         # print('User is successfully logged in. Compose button is present on the page')
 
     def nextPasswordButtonChecker(self):
-        self.getElement(self._password_next_button)
+        return self.isElementPresent(self._password_next_button)
 
     def login_valid(self, email="testqwerty6970@gmail.com", password="test_passWORD713"):
         """
         :param username = user's email:
         :param password = password to email:
-        :return:
         """
         self.clickLoginLink()
         self.enterEmail(email)
         self.clickEmailNext()
         self.enterPassword(password)
         self.clickPasswordNext()
-        if self.checkLogIn():
+        if self.checkLogIn() is True:
             print(colored('Valid LogIn test - Passed', 'green'))
         else:
             print(colored('Valid LogIn test - Failed', 'red'))
 
         self.driver.quit()
 
-    def login_invalid_email(self, email='testqwerty6970@gmail.com'):
+    def login_invalid_email(self, email='someemail@gmail.com'):
         """
         :param invalid email:
 
@@ -62,12 +61,12 @@ class LogInPage(SeleniumDriver):
         self.clickLoginLink()
         self.enterEmail(email)
         self.clickEmailNext()
-        if self.nextPasswordButtonChecker() is None:
-            # self.driver.quit()
+        if self.nextPasswordButtonChecker() is True:
+            self.driver.quit()
             print(colored('Negative test with wrong email - Passed', 'green'))
         else:
             print(colored('Negative test with wrong email - Failed', 'red'))
-            # self.driver.quit()
+            self.driver.quit()
 
     def login_invalid_password(self, email="testqwerty6970@gmail.com", password="invalidpassword"):
         """
@@ -79,7 +78,7 @@ class LogInPage(SeleniumDriver):
         self.clickEmailNext()
         self.enterPassword(password)
         self.clickPasswordNext()
-        if self.checkLogIn() is None:
+        if self.checkLogIn() is False:
             print(colored('Negative test with wrong password - Failed', 'red'))
         else:
             print(colored('Negative test with wrong password - Passed', 'green'))
