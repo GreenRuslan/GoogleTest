@@ -2,6 +2,7 @@ from webelement import SeleniumDriver
 from termcolor import colored
 
 
+
 class LogInPage(SeleniumDriver):
 
     def __init__(self, driver):
@@ -12,7 +13,7 @@ class LogInPage(SeleniumDriver):
     _password_field = '//*[@id="password"]/div[1]/div/div[1]/input'
     _email_next_button = '//*[@id="identifierNext"]'
     _password_next_button = '//*[@id="passwordNext"]'
-    _elem_for_check = '//*[@id=":8h"]/div[1]/div'
+    _elem_for_check = '//*[@id=":8r"]'
 
     def clickLoginLink(self):
         self.elementClick(self._email_field)
@@ -79,9 +80,9 @@ class LogInPage(SeleniumDriver):
         self.enterPassword(password)
         self.clickPasswordNext()
         if self.checkLogIn() is False:
-            print(colored('Negative test with wrong password - Failed', 'red'))
-        else:
             print(colored('Negative test with wrong password - Passed', 'green'))
+        else:
+            print(colored('Negative test with wrong password - Failed', 'red'))
             self.driver.quit()
 
 
