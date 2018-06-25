@@ -21,7 +21,7 @@ class SeleniumDriver():
         elif locatorType == "link":
             return By.LINK_TEXT
         else:
-            print("Locator type " + locatorType + " not correct/supported")
+            print("Locator type {} not correct/supported".format(locatorType))
         return False
 
     def getElement(self, locator, locatorType="xpath"):
@@ -31,7 +31,8 @@ class SeleniumDriver():
             byType = self.getByType(locatorType)
             element = self.driver.find_element(byType, locator)
         except:
-            print("Element not found with locator: " + locator + " and  locatorType: " + locatorType)
+            print("Element not found with locator: {locator} and  locatorType: {locatorType}".format(
+                locator=locator, locatorType=locatorType))
         return element
 
     def elementClick(self, locator, locatorType="xpath"):
@@ -39,16 +40,16 @@ class SeleniumDriver():
             element = self.getElement(locator, locatorType)
             element.click()
         except:
-            print("Cannot click on the element with locator: " + locator + " locatorType: " + locatorType)
-
+            print("Cannot click on the element with locator: {locator} locatorType: {locatorType}".format(
+                locator=locator, locatorType=locatorType))
 
     def sendKeys(self, data, locator, locatorType="xpath"):
         try:
             element = self.getElement(locator, locatorType)
             element.send_keys(data)
         except:
-            print("Can't send data on the element with locator: " + locator +
-                  " locatorType: " + locatorType)
+            print("Cannot send data on the element with locator: {locator} locatorType: {locatorType}".format(
+                locator=locator, locatorType=locatorType))
 
     def isElementPresent(self, locator, locatorType='xpath'):
         try:
