@@ -54,7 +54,7 @@ class LogInPage(SeleniumDriver):
 
         self.driver.quit()
 
-    def login_invalid_email(self, email='someemail@gmail.com'):
+    def login_invalid_email(self, email='someemaskdjhqweuiyhasdkjhail@gmail.com'):
         """
         :param invalid email:
 
@@ -64,9 +64,9 @@ class LogInPage(SeleniumDriver):
         self.clickEmailNext()
         if self.nextPasswordButtonChecker() is True:
             self.driver.quit()
-            print(colored('Negative test with wrong email - Passed', 'green'))
-        else:
             print(colored('Negative test with wrong email - Failed', 'red'))
+        else:
+            print(colored('Negative test with wrong email - Passed', 'green'))
             self.driver.quit()
 
     def login_invalid_password(self, email="testqwerty6970@gmail.com", password="invalidpassword"):
